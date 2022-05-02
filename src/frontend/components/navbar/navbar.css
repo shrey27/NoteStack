@@ -7,8 +7,8 @@
   grid-area: 'begin end' 'middle middle middle';
 }
 .box__image {
-  height: 90px;
-  width: 110px;
+  height: 75px;
+  width: 95px;
   margin: 0.5rem 0.75rem;
 }
 .btn--dark {

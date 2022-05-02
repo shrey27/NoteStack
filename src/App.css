@@ -5,6 +5,10 @@
 :root {
   --background: #1e2024;
   --text: #f3f3f3;
+  --btn--text: #1e2024;
+  --btn--hover: #dbdada;
+  --slogan--tertiary: #eea00f;
+  --slogan--primary: #f3f3f3;
   --tertiary: #eea00f;
   --tertiary--hover: #df9a1b;
   --white: #ffffff;
@@ -16,6 +20,10 @@
 [app-theme='light'] {
   --background: #f3f3f3;
   --text: #1e2024;
+  --slogan--tertiary: #1e2024;
+  --slogan--primary: #eea00f;
+  --btn--text: #1e2024;
+  --btn--hover: #dbdada;
 }
 
 html {
@@ -32,6 +40,9 @@ html {
   transition: all 200ms;
 }
 
+.mg--full {
+  margin: 1rem 0;
+}
 /* Colors */
 .text {
   color: var(--text);
@@ -41,7 +52,7 @@ html {
 }
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 0.35rem;
+  width: 0.65rem;
 }
 ::-webkit-scrollbar-thumb {
   background-color: var(--primary);
@@ -58,7 +69,7 @@ html {
   margin: 1rem 0;
 }
 .btn--auth {
-  color: var(--text);
+  color: var(--btn--text);
   background-color: var(--white);
   border: 2px solid var(--white);
   border-radius: 4px;
@@ -95,18 +106,19 @@ html {
 .btn--cancel,
 .btn--cancel--solid,
 .btn--cancel--solid:hover {
-  color: var(--red);
+  color: var(--btn--text);
   background-color: var(--white);
-  border: 2px solid var(--red);
+  border: 2px solid var(--text);
   border-radius: 4px;
   font-size: 1rem;
   padding: 0.25rem 0.5rem;
 }
+
 .btn--cancel--solid,
 .btn--cancel:hover {
-  color: var(--white);
-  background-color: var(--red);
-  border: 2px solid var(--red);
+  color: var(--btn--text);
+  background-color: var(--btn--hover);
+  border: 2px solid var(--text);
 }
 
 /* Navbar */

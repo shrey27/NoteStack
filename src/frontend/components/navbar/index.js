@@ -35,8 +35,8 @@ export function Navbar() {
               className='box__image'
               src={
                 theme === 'dark'
-                  ? 'https://res.cloudinary.com/apollo27/image/upload/v1651516250/logonotestack_mtqbog.jpg'
-                  : 'https://res.cloudinary.com/apollo27/image/upload/v1651516250/logonotestack_light_oogj8w.jpg'
+                  ? 'https://res.cloudinary.com/apollo27/image/upload/v1651522331/logonotes_dark_daqlmb.jpg'
+                  : 'https://res.cloudinary.com/apollo27/image/upload/v1651522331/logonotes_light_kfnq6i.jpg'
               }
               alt='logo'
             />
