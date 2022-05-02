@@ -1,43 +1,26 @@
 @import url('https://apolloui-neog.netlify.app/utility/common.css');
-@import url('https://apolloui-neog.netlify.app/components/drawer/drawer.css');
 @import url('https://apolloui-neog.netlify.app/components/modal/modal.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 
 :root {
-  --background: #1f2839;
-  --white--off: rgb(243, 243, 243);
-  --text: #1b2333;
-  --score--text: rgb(238, 160, 15);
-  --white--text: rgb(243, 243, 243);
-  --secondary: #f7cc21;
-  --tertiary: rgb(238, 160, 15);
-  --tertiary--hover: rgb(223, 154, 27);
+  --background: #1e2024;
+  --text: #f3f3f3;
+  --tertiary: #eea00f;
+  --tertiary--hover: #df9a1b;
   --white: #ffffff;
-  --green: rgb(62, 169, 62);
+  --green: #3ea93e;
   --red: #b80c28;
   --yellow: goldenrod;
-  --navbar--font: 'Allerta Stencil', sans-serif;
 }
 
 [app-theme='light'] {
-  --background: rgb(195, 195, 195);
-  --white--off: rgb(243, 243, 243);
-  --white--text: #1f2839;
-  --score--text: #1f2839;
-}
-[app-theme='light'] .title {
-  --white--off: #1f2839;
-}
-[app-theme='light'] .subtitle {
-  --code-span: #1f2839;
+  --background: #f3f3f3;
+  --text: #1e2024;
 }
 
 html {
   font-size: 88%;
   height: 100vh;
-}
-body {
-  background-color: rgb(195, 195, 195);
 }
 
 .App {
@@ -53,18 +36,17 @@ body {
 .text {
   color: var(--text);
 }
-
+.box-shadow {
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+}
 /* Scrollbar */
-/* width */
 ::-webkit-scrollbar {
   width: 0.35rem;
 }
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background-color: var(--primary);
   border-radius: 10px;
 }
-/* Track */
 ::-webkit-scrollbar-track {
   height: 100%;
   width: fit-content;
@@ -127,72 +109,10 @@ body {
   border: 2px solid var(--red);
 }
 
-.btn--round {
-  padding: 0.75rem 0.45rem;
-  border-radius: 50%;
-}
-
 /* Navbar */
 .navbar {
   background-color: var(--white);
   border-bottom: var(--heading);
-}
-.search--ctr {
-  width: 90%;
-  border-radius: 5px;
-  background-color: var(--white);
-}
-.search--ctr:hover {
-  border: 2px solid var(--primary--light);
-}
-
-/* Card Styling */
-.title,
-.subtitle {
-  color: var(--white--off);
-  margin: 0.5rem 0;
-}
-.subtitle {
-  color: var(--code-span);
-}
-.category {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 1rem;
-  margin: 0.75rem 1rem;
-}
-.card {
-  border: none;
-  border-radius: 0;
-  width: 80%;
-  cursor: pointer;
-}
-.card__banner {
-  border-radius: 0;
-}
-.card__title {
-  margin: 0.5rem 0.75rem;
-}
-.card__content {
-  padding-bottom: 1rem;
-  margin: 0 1rem;
-}
-/* common */
-.forgot {
-  color: var(--button-float);
-}
-
-/* Media Query */
-@media screen and (min-width: 768px) {
-  .card {
-    min-height: 20rem;
-    width: auto;
-  }
-  .menu__btn__name {
-    display: inline;
-  }
 }
 
 @media screen and (min-width: 1650px) {

@@ -2,10 +2,12 @@ import './App.css';
 import { Navbar } from './frontend/components';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTheme } from './frontend/context';
 
 function App() {
+  const { theme } = useTheme();
   return (
-    <div className='App'>
+    <div className='App' app-theme={theme}>
       <Navbar />
       Notestack
       <ToastContainer style={{ fontWeight: '500', fontSize: '1.15rem' }} />

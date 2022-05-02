@@ -28,7 +28,7 @@ export function Navbar() {
         //   handleDispatch={handleDispatch}
         />
       )}
-      <nav className='navbar shadow'>
+      <nav className='navbar box-shadow'>
         <section className='begin'>
           {/* <Link to={LANDING}>
             <img
