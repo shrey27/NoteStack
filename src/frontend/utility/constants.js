@@ -24,3 +24,14 @@ export const navlinks = [
     class: 'fa-solid fa-trash'
   }
 ];
+
+export const colors = [
+  { id: 'c1', color: '#f28b82', className: 'red' },
+  { id: 'c2', color: '#ccff90', className: 'green' },
+  { id: 'c3', color: '#fbbc04', className: 'orange' },
+  { id: 'c4', color: '#cbf0f8', className: 'blue' },
+  { id: 'c5', color: '#e6c9a8', className: 'brown' },
+  { id: 'c6', color: '#fff475', className: 'yellow' },
+  { id: 'c7', color: '#d7aefb', className: 'purple' },
+  { id: 'c8', color: '#fdcfe8', className: 'pink' }
+];

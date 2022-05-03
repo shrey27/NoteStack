@@ -1,0 +1,150 @@
+@import '../../../App.css';
+
+/* New Note */
+.newnote {
+  width: 90%;
+  max-width: 40rem;
+  margin: 1.5rem auto;
+  display: flex;
+  border: 1px solid var(--text);
+  justify-content: space-between;
+  font-size: 1.25rem;
+  border-radius: 5px;
+  padding: 0.75rem 0;
+  color: var(--text);
+  cursor: pointer;
+}
+.newnote span {
+  margin: 0 0.5rem;
+}
+.note {
+  width: 90%;
+  max-width: 40rem;
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--text);
+  border-radius: 5px;
+  padding: 0.5rem 0 0;
+}
+.note__title {
+  font-size: 1.25rem;
+  background-color: transparent;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+}
+.note__textarea {
+  font-size: 1rem;
+  background-color: transparent;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  height: 7rem;
+  max-width: 100%;
+  margin: 0.25rem 0;
+  resize: none;
+}
+.color__ctr {
+  position: relative;
+  width: 5rem;
+  height: 2rem;
+}
+.color__tab {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, #ff512f, #f09819);
+  cursor: pointer;
+}
+.colors {
+  position: absolute;
+  top: 2rem;
+  border: 2px solid var(--btn--text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f3f3f3;
+  border-radius: 5px;
+  padding: 0.25rem 0.35rem;
+  display: none;
+}
+.color__tab:hover ~ .colors,
+.colors:hover {
+  display: flex;
+}
+.color {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid var(--btn--text);
+  margin: 0 0.25rem;
+  cursor: pointer;
+}
+.color.red {
+  background-color: #f28b82;
+}
+.color.green {
+  background-color: #ccff90;
+}
+.color.orange {
+  background-color: #fbbc04;
+}
+.color.blue {
+  background-color: #cbf0f8;
+}
+.color.brown {
+  background-color: #e6c9a8;
+}
+.color.pink {
+  background-color: #fdcfe8;
+}
+.color.yellow {
+  background-color: #fff475;
+}
+.color.purple {
+  background-color: #d7aefb;
+}
+.note__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+}
+.btn--note,
+.btn--note:hover {
+  padding: 0.25rem 1rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--btn--text);
+}
+
+/* Notes */
+.notes {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1rem 2rem;
+}
+.singlenote {
+  width: 90%;
+  max-width: 25rem;
+  border: 1px solid var(--text);
+  color: var(--btn--text);
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.singlenote h1 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.singlenote p {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 1rem 0;
+}
+.note__section i {
+  font-size: 1.05rem;
+  margin: 1rem 1rem 1rem 0.5rem;
+}
