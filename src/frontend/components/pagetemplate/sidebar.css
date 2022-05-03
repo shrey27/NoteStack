@@ -1,0 +1,70 @@
+@import '../../../App.css';
+
+.sidebar {
+  grid-area: sidebar;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.sidebar__options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 1rem 0;
+  width: 100%;
+  cursor: pointer;
+  color: var(--btn--text);
+  background-color: var(--white);
+}
+.selected {
+  background-color: var(--tertiary);
+  color: var(--white);
+  margin: 0.25rem 0;
+}
+.sidebar__options__span {
+  margin: 0.5rem 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .sidebar {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 1rem 2rem;
+    position: sticky;
+    top: 1rem;
+    border: none;
+  }
+  .sidebar__options {
+    flex-direction: row;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 0.75rem;
+    width: 90%;
+    border-radius: 10px;
+    margin: 0.5rem 0;
+    transition: all 200ms;
+    border: 1px solid var(--text);
+  }
+  .sidebar__options:hover {
+    background-color: var(--tertiary);
+    color: var(--white);
+    border: 1px solid var(--tertiary);
+  }
+  .sidebar__options__span {
+    display: inline;
+    text-align: center;
+    padding-left: 1rem;
+    margin: 0;
+  }
+  .selected {
+    background-color: var(--tertiary);
+    color: var(--white);
+    border: 1px solid var(--background);
+  }
+}
