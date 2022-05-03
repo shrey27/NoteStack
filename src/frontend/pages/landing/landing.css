@@ -1,0 +1,64 @@
+@import '../../../App.css';
+
+.landing {
+  margin: 5rem auto 0;
+  transform: translateX(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+.landing__bnr {
+  width: 60%;
+  height: 30%;
+}
+.landing__cnt {
+  width: 90%;
+  height: 40%;
+}
+.landing__slogan {
+  color: var(--text);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0.75rem 0;
+}
+.landing__slogan .tertiary {
+  color: var(--slogan--tertiary);
+  margin: 0 0.5rem 0 0;
+}
+.landing__slogan .primary {
+  color: var(--slogan--primary);
+  margin: 0 0.5rem 0 0;
+}
+.landing__para {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: var(--text);
+  margin: 1rem 0;
+}
+.btn--flex {
+  font-size: 16px;
+}
+.btn--landing {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 1024px) {
+  .landing {
+    flex-direction: row-reverse;
+  }
+  .landing__bnr {
+    width: 33%;
+  }
+  .landing__cnt {
+    width: 58%;
+  }
+  .btn--flex {
+    font-size: 24px;
+  }
+}

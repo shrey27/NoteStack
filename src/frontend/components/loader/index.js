@@ -1,8 +1,8 @@
 import './loader.css';
 import { useTheme } from '../../context';
 
-const lightImg = 'https://res.cloudinary.com/apollo27/image/upload/v1651143122/loader_light_ehrxuu.gif';
-const darkImg = 'https://res.cloudinary.com/apollo27/image/upload/v1651143122/loader_dark_w4p7xh.gif';
+const darkImg = 'https://res.cloudinary.com/apollo27/image/upload/v1651501490/Infinity-dark_fjexsu.gif';
+const lightImg = 'https://res.cloudinary.com/apollo27/image/upload/v1651501490/infinity_light_lbwit8.gif';
 
 export function Loader() {
   const { theme } = useTheme();

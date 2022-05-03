@@ -1,42 +1,46 @@
 import './navbar.css';
-// import { Link, useNavigate } from 'react-router-dom';
-// import { HOMEPAGE, LANDING } from '../../routes';
+import { Link } from 'react-router-dom';
+import { LANDING } from '../../routes';
 import { useTheme } from '../../context';
 // import { signOutHandler } from '../../service/userActions';
 import { SignoutModal } from '../modal/SignoutModal';
 import { useState } from 'react';
 
 export function Navbar() {
-//   const navigate = useNavigate();
+  //   const navigate = useNavigate();
   const [signoutModal, setSignoutModal] = useState(false);
   const { theme, switchTheme } = useTheme();
-//   const handleDispatch = () => dispatch(signOutHandler(navigate, LANDING));
+  //   const handleDispatch = () => dispatch(signOutHandler(navigate, LANDING));
 
-//   const handleAuthentication = () => {
-//     if (token) {
-//       setSignoutModal(true);
-//     } else {
-//       navigate(SIGNIN);
-//     }
-//   };
+  //   const handleAuthentication = () => {
+  //     if (token) {
+  //       setSignoutModal(true);
+  //     } else {
+  //       navigate(SIGNIN);
+  //     }
+  //   };
 
   return (
     <div>
       {signoutModal && (
         <SignoutModal
           setSignoutModal={setSignoutModal}
-        //   handleDispatch={handleDispatch}
+          //   handleDispatch={handleDispatch}
         />
       )}
-      <nav className='navbar shadow'>
+      <nav className='navbar box-shadow'>
         <section className='begin'>
-          {/* <Link to={LANDING}>
+          <Link to={LANDING}>
             <img
               className='box__image'
-              src='https://res.cloudinary.com/apollo27/image/upload/v1651258405/logo_lvwf0l.png'
+              src={
+                theme === 'dark'
+                  ? 'https://res.cloudinary.com/apollo27/image/upload/v1651522331/logonotes_dark_daqlmb.jpg'
+                  : 'https://res.cloudinary.com/apollo27/image/upload/v1651522331/logonotes_light_kfnq6i.jpg'
+              }
               alt='logo'
             />
-          </Link> */}
+          </Link>
         </section>
         {/* {pathname === '/homepage' && <section className="middle cen sm-s">
                 <div className="search--ctr">
