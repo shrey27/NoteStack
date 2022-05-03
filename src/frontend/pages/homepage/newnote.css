@@ -34,6 +34,16 @@
   border: none;
   outline: none;
 }
+.note__label {
+  font-size: 1rem;
+  background-color: transparent;
+  padding: 0.5rem;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid var(--btn--text);
+  margin: 0 0.5rem;
+  width: fit-content;
+}
 .note__textarea {
   font-size: 1rem;
   background-color: transparent;
@@ -113,9 +123,9 @@
 }
 .btn--note,
 .btn--note:hover {
-  padding: 0.25rem 1rem;
+  padding: 0.5rem 1.5rem;
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   color: var(--btn--text);
 }
 
@@ -138,6 +148,17 @@
 .singlenote h1 {
   font-size: 1.25rem;
   font-weight: 500;
+}
+.singlenote h2 {
+  margin: 2rem 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 1px solid var(--red);
+  width: fit-content;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  background-color: var(--red);
+  color: var(--white);
 }
 .singlenote p {
   font-size: 1rem;

@@ -5,7 +5,8 @@ import { colors } from '../../utility/constants';
 const defaultValue = {
   title: '',
   description: '',
-  color: '#f3f3f3'
+  color: '#f3f3f3',
+  label: ''
 };
 
 export function NewNote({ setNotes }) {
@@ -30,7 +31,7 @@ export function NewNote({ setNotes }) {
   return (
     <Fragment>
       {!showEditor ? (
-        <div className='newnote' onClick={() => setShowEditor(true)}>
+        <div className='newnote box-shadow' onClick={() => setShowEditor(true)}>
           <span>Create a note</span>
           <span>
             <i className='fa-solid fa-plus'></i>
@@ -60,6 +61,14 @@ export function NewNote({ setNotes }) {
               value={form?.description}
               onChange={handleChange}
             ></textarea>
+            <input
+              type='text'
+              className='note__label'
+              placeholder='Enter Label'
+              name='label'
+              value={form?.label}
+              onChange={handleChange}
+            />
             <div className='note__buttons'>
               <section className='color__ctr'>
                 <div className='color__tab'></div>
