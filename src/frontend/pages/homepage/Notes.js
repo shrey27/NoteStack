@@ -1,7 +1,7 @@
 import './newnote.css';
 import { Fragment } from 'react';
 
-export function Notes({ notes }) {
+export function Notes({ notes, setEditModal, setFormObject }) {
   return (
     <Fragment>
       <div className='notes'>
