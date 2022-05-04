@@ -4,13 +4,11 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { SIGNIN, HOMEPAGE } from '../../routes';
 import { regexArray } from '../../utility/constants';
 import { Loader } from '../../components';
-import { useTheme } from '../../context';
 import { useDispatch, useSelector } from 'react-redux';
 import { signUpHandler } from '../../actions/authActions';
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
-  const [showCnfPassword, setShowCnfPassword] = useState(false);
   const [emailDetails, setEmailDetails] = useState({
     username: 'Shrey Pandey',
     email: 'shreyp@gmail.com',
@@ -20,8 +18,7 @@ export default function Signup() {
   const [error, setError] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { theme } = useTheme();
-
+  
   const { authLoader } = useSelector((state) => state.auth);
 
   const location = useLocation();
