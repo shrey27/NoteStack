@@ -12,7 +12,6 @@ export function Navbar() {
   const [signoutModal, setSignoutModal] = useState(false);
   const { theme, switchTheme } = useTheme();
   const { token } = useSelector((state) => state.auth);
-  console.log(token);
   const dispatch = useDispatch();
   const handleDispatch = () =>
     dispatch(signOutHandler({ dispatch, navigate, LANDING }));
