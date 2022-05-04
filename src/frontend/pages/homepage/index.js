@@ -1,6 +1,6 @@
 import './homepage.css';
 import { Fragment, useState, useEffect } from 'react';
-import { PageTemplate, EditNoteModal } from '../../components';
+import { PageTemplate, EditNoteModal, Loader } from '../../components';
 import { NewNote } from './NewNote';
 import { Notes } from './Notes';
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,7 +10,7 @@ export default function Homepage() {
   const [usernotes, setuserNotes] = useState([]);
   const [editModal, setEditModal] = useState(false);
   const [formObject, setFormObject] = useState({});
-  const { user } = useSelector((state) => state.auth);
+  const { user, authLoader } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,11 +33,15 @@ export default function Homepage() {
       )}
       <PageTemplate>
         <NewNote handleNewNote={handleNewNote} />
-        <Notes
-          notes={usernotes}
-          setEditModal={setEditModal}
-          setFormObject={setFormObject}
-        />
+        {authLoader === 'pending' ? (
+          <Loader />
+        ) : (
+          <Notes
+            notes={usernotes}
+            setEditModal={setEditModal}
+            setFormObject={setFormObject}
+          />
+        )}
       </PageTemplate>
     </Fragment>
   );
