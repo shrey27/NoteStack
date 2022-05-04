@@ -6,6 +6,7 @@ import {
 } from 'firebase/auth';
 import { auth, db, userPostCollection } from '../firebase/firebase';
 import { getDoc, doc, setDoc } from 'firebase/firestore';
+import { authActions } from '../store/authSlice';
 
 export const signUpHandler = createAsyncThunk(
   'auth/signUpHandler',
@@ -64,13 +65,15 @@ export const signInHandler = createAsyncThunk(
 export const signOutHandler = createAsyncThunk(
   'auth/signOutHandler',
   async (initialPost, { rejectWithValue }) => {
-    try {
-      const { navigate, pathname } = initialPost;
-      await signOut(auth);
-      localStorage.clear();
-      navigate(pathname);
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
+    const { dispatch, navigate, pathname } = initialPost;
+    signOut(auth)
+      .then(() => {
+        localStorage.clear();
+        dispatch(authActions.getToken(''));
+        navigate(pathname);
+      })
+      .catch((error) => {
+        return rejectWithValue(error.message);
+      });
   }
 );

@@ -53,10 +53,17 @@ const authSlice = createSlice({
         state.authLoader = 'rejected';
         state.error = action.error.message;
       })
-      .addCase(signOutHandler.fulfilled, (state, action) => {
-        state.authLoader = 'idle';
-        state.user = {};
+      .addCase(signOutHandler.pending, (state) => {
+        state.authLoader = 'pending';
+      })
+      .addCase(signOutHandler.fulfilled, (state) => {
+        state.authLoader = 'fulfilled';
+        state.user = null;
         state.token = '';
+      })
+      .addCase(signOutHandler.rejected, (state, action) => {
+        state.authLoader = 'rejected';
+        state.error = action.error.message;
       });
   }
 });
