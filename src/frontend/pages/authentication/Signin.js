@@ -4,20 +4,19 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { SIGNUP, HOMEPAGE } from '../../routes';
 import { regexArray } from '../../utility/constants';
 import { Loader } from '../../components';
-import { useTheme } from '../../context';
 import { useDispatch, useSelector } from 'react-redux';
+import { signInHandler } from '../../actions/authActions';
 
 export default function Signin() {
   const [showPassword, setShowPassword] = useState(false);
   const [emailDetails, setEmailDetails] = useState({
-    email: 'carljamy@gmail.com',
-    password: 'carljamy1234'
+    email: 'carljones96@gmail.com',
+    password: 'carljones96'
   });
   const [error, setError] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { authLoader } = useSelector((state) => state.auth);
-  const { theme } = useTheme();
 
   const location = useLocation();
   const from = location?.state?.from?.pathname || '/';
@@ -42,12 +41,13 @@ export default function Signin() {
     e.preventDefault();
     const { email, password } = emailDetails;
     if (validateFields()) {
+      dispatch(signInHandler({ email, password, navigate, HOMEPAGE, from }));
     }
   };
 
   return (
     <Fragment>
-      {false ? (
+      {authLoader === 'pending' ? (
         <Loader />
       ) : (
         <div className='card authentication shdw'>

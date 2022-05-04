@@ -12,50 +12,29 @@
   padding: 1.25rem 1.5rem;
   font-size: 1.25rem;
 }
-.modal__content.modal__content__playlist {
-  background-color: var(--tertiary);
-  color: var(--white);
-  border: none;
-}
 .modal__content.modal__content__signout {
   background-color: var(--white);
-  color: var(--text);
+  color: var(--btn--text);
 }
-.playlist__option {
-  display: flex;
-  align-items: center;
-  margin: 1rem 0;
-}
-input[type='checkbox'] {
-  transform: scale(1.35);
-  background-color: var(--dismiss--light);
-  margin: 0 0.25rem;
-}
-.playlist__input {
-  width: 100%;
-  margin: 1rem 0 0 0;
-  display: block;
-  padding: 0.5rem;
-  font-size: 1rem;
-  background-color: var(--dismiss);
-  color: var(--white);
-  border-radius: 5px;
-  border: 1px solid var(--white);
-  outline: none;
-}
-.playlist__error {
-  font-size: 1rem;
-  color: var(--tag);
-  margin: 0.5rem 0.5rem 1.25rem;
-}
-.textarea {
-  max-width: 100%;
-  height: 6rem;
-  border-radius: 0;
-  margin: 0;
-  font-size: 1rem;
-  padding: 0.25rem;
-}
-.btn--modal {
+.btn--red {
   margin: 1rem 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  color: var(--white);
+  background-color: var(--red);
+  border: 2px solid var(--red);
+  border-radius: 5px;
+}
+.btn--red:hover {
+  color: var(--red);
+  background-color: var(--white);
+  border: 2px solid var(--red);
+}
+.btn--modal,
+.btn--modal:hover {
+  margin: 1rem 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
 }

@@ -2,17 +2,18 @@ import './navbar.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { LANDING, HOMEPAGE, SIGNIN } from '../../routes';
 import { useTheme } from '../../context';
-// import { signOutHandler } from '../../service/userActions';
 import { SignoutModal } from '../modal/SignoutModal';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { signOutHandler } from '../../actions/authActions';
 
 export function Navbar() {
   const navigate = useNavigate();
   const [signoutModal, setSignoutModal] = useState(false);
   const { theme, switchTheme } = useTheme();
   const { token } = useSelector((state) => state.auth);
-  //   const handleDispatch = () => dispatch(signOutHandler(navigate, LANDING));
+  const dispatch = useDispatch();
+  const handleDispatch = () => dispatch(signOutHandler({ navigate, LANDING }));
 
   const handleAuthentication = () => {
     if (token) {
@@ -27,7 +28,7 @@ export function Navbar() {
       {signoutModal && (
         <SignoutModal
           setSignoutModal={setSignoutModal}
-          //   handleDispatch={handleDispatch}
+          handleDispatch={handleDispatch}
         />
       )}
       <nav className='navbar box-shadow'>

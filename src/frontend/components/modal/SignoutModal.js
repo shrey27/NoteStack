@@ -17,14 +17,11 @@ export const SignoutModal = ({ setSignoutModal, handleDispatch }) => {
           Are you sure you want to signout ?
         </h1>
         <div className='flex-ct-ct mg--full'>
-          <button
-            className='btn btn--cancel--solid btn--modal'
-            onClick={handleSignoutFunction}
-          >
+          <button className='btn btn--red' onClick={handleSignoutFunction}>
             Yes
           </button>
           <button
-            className='btn btn--cancel btn--modal'
+            className='btn btn--auth--solid btn--modal'
             onClick={() => setSignoutModal(false)}
           >
             No
@@ -36,4 +33,4 @@ export const SignoutModal = ({ setSignoutModal, handleDispatch }) => {
       </span>
     </div>
   );
-}
+};

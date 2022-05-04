@@ -6,15 +6,16 @@ import { regexArray } from '../../utility/constants';
 import { Loader } from '../../components';
 import { useTheme } from '../../context';
 import { useDispatch, useSelector } from 'react-redux';
+import { signUpHandler } from '../../actions/authActions';
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [showCnfPassword, setShowCnfPassword] = useState(false);
   const [emailDetails, setEmailDetails] = useState({
-    username: 'John Doe',
-    email: 'johndoe12@gmail.com',
-    password: 'johndoe1234',
-    confirmPassword: 'johndoe1234'
+    username: 'Shrey Pandey',
+    email: 'shreyp@gmail.com',
+    password: 'Shreypandey27',
+    confirmPassword: 'Shreypandey27'
   });
   const [error, setError] = useState('');
   const dispatch = useDispatch();
@@ -51,12 +52,15 @@ export default function Signup() {
     e.preventDefault();
     const { username, email, password } = emailDetails;
     if (validateFields()) {
+      dispatch(
+        signUpHandler({username, email, password, navigate, HOMEPAGE, from})
+      ).unwrap();
     }
   };
 
   return (
     <div className='signupPage'>
-      {false ? (
+      {authLoader === 'pending' ? (
         <Loader />
       ) : (
         <div className='card authentication shdw'>
@@ -136,7 +140,7 @@ export default function Signup() {
               <div className='input__container'>
                 <input
                   className='input input__password sm-s'
-                  type={showCnfPassword ? 'text' : 'password'}
+                  type='password'
                   name='cnf__password__signup'
                   id='cnf__password__signup'
                   autoComplete='off'
@@ -150,10 +154,6 @@ export default function Signup() {
                   }
                   onFocus={() => setError('')}
                 />
-                <i
-                  className='fa-solid fa-eye input__eye'
-                  onClick={() => setShowCnfPassword((e) => !e)}
-                ></i>
               </div>
             </div>
             <button
