@@ -35,3 +35,8 @@ export const colors = [
   { id: 'c7', color: '#d7aefb', className: 'purple' },
   { id: 'c8', color: '#fdcfe8', className: 'pink' }
 ];
+
+export const regexArray = {
+  email:
+    /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/
+};
