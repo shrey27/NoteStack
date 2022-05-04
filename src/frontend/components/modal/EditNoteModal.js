@@ -1,21 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { colors } from '../../utility/constants';
 import './modal.css';
 
-export const EditNoteModal = ({ setEditModal, formObject }) => {
-  // const handleSignoutFunction = () => {
-  //   setEditModal(false);
-  // };
-  const [form, setForm] = useState(formObject);
-  const handleChange = () => {};
-  const handleSubmit = () => {};
+export const EditNoteModal = ({ setEditModal, formObject, handleNewNote }) => {
+  
+  const [form, setForm] = useState({
+    title: '',
+    description: '',
+    label: '',
+    color: ''
+  });
+  useEffect(() => {
+    setForm({ ...formObject });
+  }, [formObject]);
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = () => {
+    handleNewNote(form);
+    setEditModal(false);
+  };
+
   return (
     <div className='modal modal__open flex-ct-ct'>
       <div
         className='modal__background'
         onClick={() => setEditModal(false)}
       ></div>
-      <div className='modal__content modal__content__signout'>
+      <div className='modal__content modal__content__edit'>
         <form
           onSubmit={handleSubmit}
           className='note'

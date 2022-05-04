@@ -18,18 +18,36 @@ export default function Homepage() {
   }, [user]);
 
   const handleNewNote = (newNote) => {
-    dispatch(
-      updatePostHandler({
-        uid: user?.uid,
-        note: { ...user, notes: [...usernotes, newNote] }
-      })
-    );
+    if (usernotes.some((item) => item.id === newNote.id)) {
+      let temp = usernotes.reduce(
+        (acc, curr) =>
+          curr.id === newNote.id ? [...acc, { ...newNote }] : [...acc, curr],
+        []
+      );
+      dispatch(
+        updatePostHandler({
+          uid: user?.uid,
+          note: { ...user, notes: temp }
+        })
+      );
+    } else {
+      dispatch(
+        updatePostHandler({
+          uid: user?.uid,
+          note: { ...user, notes: [...usernotes, newNote] }
+        })
+      );
+    }
   };
 
   return (
     <Fragment>
       {editModal && (
-        <EditNoteModal setEditModal={setEditModal} formObject={formObject} />
+        <EditNoteModal
+          setEditModal={setEditModal}
+          formObject={formObject}
+          handleNewNote={handleNewNote}
+        />
       )}
       <PageTemplate>
         <NewNote handleNewNote={handleNewNote} />

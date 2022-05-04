@@ -5,7 +5,8 @@
   opacity: 0.9;
 }
 .modal__content,
-.modal__content__signout {
+.modal__content__signout,
+.modal__content__edit {
   width: 100%;
   max-width: 25rem;
   border: none;
@@ -15,6 +16,9 @@
 .modal__content.modal__content__signout {
   background-color: var(--white);
   color: var(--btn--text);
+}
+.modal__content__edit {
+  max-width: 40rem;
 }
 .btn--red {
   margin: 1rem 0.5rem;
