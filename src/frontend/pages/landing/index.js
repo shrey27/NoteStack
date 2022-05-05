@@ -1,6 +1,6 @@
 import './landing.css';
 import { Link } from 'react-router-dom';
-import { LANDING } from '../../routes';
+import { HOMEPAGE } from '../../routes';
 import banner from '../../assets/banner.svg';
 
 export default function Landing() {
@@ -25,7 +25,7 @@ export default function Landing() {
             a task and finish it using a pomodoro clock
           </p>
           <div className='flex-ct-st mg--full'>
-            <Link to={LANDING} className='btn btn--auth--solid btn--landing'>
+            <Link to={HOMEPAGE} className='btn btn--auth--solid btn--landing'>
               Get Started
             </Link>
             <a

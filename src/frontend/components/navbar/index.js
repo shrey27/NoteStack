@@ -1,6 +1,6 @@
 import './navbar.css';
 import { Link } from 'react-router-dom';
-import { LANDING } from '../../routes';
+import { LANDING, HOMEPAGE } from '../../routes';
 import { useTheme } from '../../context';
 // import { signOutHandler } from '../../service/userActions';
 import { SignoutModal } from '../modal/SignoutModal';
@@ -66,25 +66,19 @@ export function Navbar() {
                 <i className='fa-solid fa-sun'></i>
               </button>
             )}
-            {/* {token && (
-              <Link to={HOMEPAGE} className='btn--navbar sm sb'>
-                <i className='fa-solid fa-house'></i>
-              </Link>
-            )}
-            {token && (
-              <Link to={LEADERBOARD} className='btn--navbar sm sb'>
-                <i className='fa-solid fa-trophy'></i>
-              </Link>
-            )}
+            <Link to={HOMEPAGE} className='btn--navbar sm sb'>
+              <i className='fa-solid fa-house'></i>
+            </Link>
             <button
-              className='btn btn--cancel--solid sm sb'
-              onClick={handleAuthentication}
+              className='btn btn--auth--solid sm sb'
+              // onClick={handleAuthentication}
             >
               <span className='logout__mobile'>
-                {token ? 'Logout' : 'Login'}
+                {/* {token ? 'Logout' : 'Login'} */}
+                Login
               </span>
               <i className='fa-solid fa-arrow-right-to-bracket'></i>
-            </button> */}
+            </button>
           </div>
         </section>
       </nav>

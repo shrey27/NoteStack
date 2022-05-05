@@ -1,0 +1,26 @@
+@import '../../../App.css';
+
+.main__grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas:
+    'main'
+    'sidebar';
+  align-items: flex-start;
+}
+.sidebar {
+  z-index: 2;
+}
+.main {
+  grid-area: main;
+}
+
+@media screen and (min-width: 1024px) {
+  .main__grid {
+    grid-template-columns: 20% 80%;
+    grid-template-areas: 'sidebar main';
+  }
+  .main {
+    min-height: 80vh;
+  }
+}
