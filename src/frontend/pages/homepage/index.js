@@ -14,7 +14,7 @@ export default function Homepage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    let temp = user?.notes?.filter((item) => !item.trash);
+    let temp = user?.notes?.filter((item) => !item.trash && !item.archive);
     setuserNotes(temp);
   }, [user]);
 

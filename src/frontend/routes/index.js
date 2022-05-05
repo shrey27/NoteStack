@@ -4,6 +4,7 @@ import Homepage from '../pages/homepage';
 import Signin from '../pages/authentication/Signin';
 import Signup from '../pages/authentication/Signup';
 import Trash from '../pages/trash';
+import Archive from '../pages/archive';
 
 // Routes
 export const LANDING = '/';
@@ -11,6 +12,7 @@ export const HOMEPAGE = '/homepage';
 export const SIGNUP = '/signup';
 export const SIGNIN = '/signin';
 export const TRASH = '/trash';
+export const ARCHIVE = '/archive';
 export const NOTFOUND = '*';
 
 export const availableRoutes = (
@@ -20,6 +22,7 @@ export const availableRoutes = (
     <Route path={SIGNUP} element={<Signup />} />
     <Route path={SIGNIN} element={<Signin />} />
     <Route path={TRASH} element={<Trash />} />
+    <Route path={ARCHIVE} element={<Archive />} />
   </Routes>
 );
 

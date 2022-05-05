@@ -1,7 +1,7 @@
 import './newnote.css';
 import { Fragment } from 'react';
 import { useLocation } from 'react-router';
-import { HOMEPAGE, TRASH } from '../../routes';
+import { ARCHIVE, HOMEPAGE, TRASH } from '../../routes';
 
 export function Notes({
   notes,
@@ -20,6 +20,14 @@ export function Notes({
       handleDeleteNote(note);
     } else {
       handleNewNote({ ...note, trash: true });
+    }
+  };
+
+  const handleArchive = (note) => {
+    if (notes.some((item) => item.archive)) {
+      handleNewNote({ ...note, archive: false });
+    } else {
+      handleNewNote({ ...note, archive: true });
     }
   };
 
@@ -48,9 +56,14 @@ export function Notes({
                     <i className='fa-solid fa-thumbtack'></i>
                   </button>
                 )}
-                <button className='btn--icon'>
-                  <i className='fa-solid fa-box-archive'></i>
-                </button>
+                {(pathname === HOMEPAGE || pathname === ARCHIVE) && (
+                  <button
+                    className='btn--icon'
+                    onClick={handleArchive.bind(this, note)}
+                  >
+                    <i className='fa-solid fa-box-archive'></i>
+                  </button>
+                )}
                 {(pathname === HOMEPAGE || pathname === TRASH) && (
                   <button
                     className='btn--icon'
