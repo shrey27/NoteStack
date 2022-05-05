@@ -1,31 +1,34 @@
 import './navbar.css';
-import { Link } from 'react-router-dom';
-import { LANDING, HOMEPAGE } from '../../routes';
+import { Link, useNavigate } from 'react-router-dom';
+import { LANDING, HOMEPAGE, SIGNIN } from '../../routes';
 import { useTheme } from '../../context';
-// import { signOutHandler } from '../../service/userActions';
 import { SignoutModal } from '../modal/SignoutModal';
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { signOutHandler } from '../../actions/authActions';
 
 export function Navbar() {
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
   const [signoutModal, setSignoutModal] = useState(false);
   const { theme, switchTheme } = useTheme();
-  //   const handleDispatch = () => dispatch(signOutHandler(navigate, LANDING));
+  const { token } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const handleDispatch = () => dispatch(signOutHandler({ navigate, LANDING }));
 
-  //   const handleAuthentication = () => {
-  //     if (token) {
-  //       setSignoutModal(true);
-  //     } else {
-  //       navigate(SIGNIN);
-  //     }
-  //   };
+  const handleAuthentication = () => {
+    if (token) {
+      setSignoutModal(true);
+    } else {
+      navigate(SIGNIN);
+    }
+  };
 
   return (
     <div>
       {signoutModal && (
         <SignoutModal
           setSignoutModal={setSignoutModal}
-          //   handleDispatch={handleDispatch}
+          handleDispatch={handleDispatch}
         />
       )}
       <nav className='navbar box-shadow'>
@@ -71,11 +74,10 @@ export function Navbar() {
             </Link>
             <button
               className='btn btn--auth--solid sm sb'
-              // onClick={handleAuthentication}
+              onClick={handleAuthentication}
             >
               <span className='logout__mobile'>
-                {/* {token ? 'Logout' : 'Login'} */}
-                Login
+                {token ? 'Logout' : 'Login'}
               </span>
               <i className='fa-solid fa-arrow-right-to-bracket'></i>
             </button>
