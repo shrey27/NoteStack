@@ -13,14 +13,16 @@ export default function Label() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    let temp = user?.notes?.filter(
-      (item) => !item.archive && item.trash && item.label !== ''
-    );
+    let temp = user?.notes
+      ?.filter((item) => item.label)
+      .filter((item) => !item.archive)
+      .filter((item) => !item.trash);
+      
     if (search) {
       temp = temp.filter((item) => item.label === search);
     }
     setuserNotes(temp);
-  }, [user, search]);
+  }, [user?.notes, search]);
 
   const handleDeleteNote = (note) => {
     let temp = usernotes.filter((curr) => curr.id !== note.id);
