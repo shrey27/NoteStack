@@ -61,18 +61,20 @@ export default function Homepage() {
         />
       )}
       <PageTemplate>
-        <NewNote handleNewNote={handleNewNote} />
-        {authLoader === 'pending' ? (
-          <Loader />
-        ) : (
-          <Notes
-            notes={usernotes}
-            setEditModal={setEditModal}
-            setFormObject={setFormObject}
-            handleNewNote={handleNewNote}
-            handleDeleteNote={handleDeleteNote}
-          />
-        )}
+        <div className={`${authLoader === 'pending' && 'pointerEvents'}`}>
+          <NewNote handleNewNote={handleNewNote} />
+          {authLoader === 'pending' ? (
+            <Loader />
+          ) : (
+            <Notes
+              notes={usernotes}
+              setEditModal={setEditModal}
+              setFormObject={setFormObject}
+              handleNewNote={handleNewNote}
+              handleDeleteNote={handleDeleteNote}
+            />
+          )}
+        </div>
       </PageTemplate>
     </Fragment>
   );
