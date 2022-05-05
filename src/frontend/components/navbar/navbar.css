@@ -6,6 +6,22 @@
   grid-template-columns: 1fr 1fr;
   grid-area: 'begin end' 'middle middle middle';
 }
+.search__btn {
+  border: none;
+  outline: none;
+  padding: 0;
+  background-color: transparent;
+}
+.search--ctr,
+.search--ctr:hover {
+  background-color: var(--white);
+  border-radius: 5px;
+}
+.input,
+.input:hover {
+  border: none;
+  outline: none;
+}
 .box__image {
   height: 75px;
   width: 95px;

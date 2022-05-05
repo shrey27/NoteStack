@@ -1,7 +1,7 @@
 import './newnote.css';
 import { Fragment } from 'react';
 import { useLocation } from 'react-router';
-import { ARCHIVE, HOMEPAGE, TRASH } from '../../routes';
+import { ARCHIVE, HOMEPAGE, LABEL, TRASH } from '../../routes';
 import { Empty } from '../../components';
 
 export function Notes({
@@ -60,7 +60,9 @@ export function Notes({
                       <i className='fa-solid fa-thumbtack'></i>
                     </button>
                   )}
-                  {(pathname === HOMEPAGE || pathname === ARCHIVE) && (
+                  {(pathname === HOMEPAGE ||
+                    pathname === ARCHIVE ||
+                    pathname === LABEL) && (
                     <button
                       className='btn--icon'
                       onClick={handleArchive.bind(this, note)}
@@ -68,7 +70,9 @@ export function Notes({
                       <i className='fa-solid fa-box-archive'></i>
                     </button>
                   )}
-                  {(pathname === HOMEPAGE || pathname === TRASH) && (
+                  {(pathname === HOMEPAGE ||
+                    pathname === TRASH ||
+                    pathname === LABEL) && (
                     <button
                       className='btn--icon'
                       onClick={handleDelete.bind(this, note)}
@@ -84,7 +88,7 @@ export function Notes({
                       <i className='fa-solid fa-arrow-rotate-left'></i>
                     </button>
                   )}
-                  {pathname === HOMEPAGE && (
+                  {(pathname === HOMEPAGE || pathname === LABEL) && (
                     <button
                       className='btn--icon btn--rt'
                       onClick={handleEdit.bind(this, note)}

@@ -5,6 +5,7 @@ import Signin from '../pages/authentication/Signin';
 import Signup from '../pages/authentication/Signup';
 import Trash from '../pages/trash';
 import Archive from '../pages/archive';
+import Label from '../pages/label';
 import NotFound from '../pages/notfound';
 
 // Routes
@@ -14,6 +15,7 @@ export const SIGNUP = '/signup';
 export const SIGNIN = '/signin';
 export const TRASH = '/trash';
 export const ARCHIVE = '/archive';
+export const LABEL = '/label';
 export const NOTFOUND = '*';
 
 export const availableRoutes = (
@@ -24,7 +26,8 @@ export const availableRoutes = (
     <Route path={SIGNIN} element={<Signin />} />
     <Route path={TRASH} element={<Trash />} />
     <Route path={ARCHIVE} element={<Archive />} />
-    <Route path={NOTFOUND} element={<NotFound />} /> 
+    <Route path={LABEL} element={<Label />} />
+    <Route path={NOTFOUND} element={<NotFound />} />
   </Routes>
 );
 

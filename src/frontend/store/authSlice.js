@@ -10,7 +10,8 @@ const initialState = {
   authLoader: 'idle',
   error: '',
   token: '',
-  user: null
+  user: null,
+  search: ''
 };
 
 const authSlice = createSlice({
@@ -22,6 +23,9 @@ const authSlice = createSlice({
     },
     getUser(state, action) {
       state.user = action.payload;
+    },
+    getSearch(state, action) {
+      state.search = action.payload;
     }
   },
   extraReducers(builder) {
