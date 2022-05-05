@@ -14,6 +14,7 @@
 }
 .aside_right {
   grid-area: aside_right;
+  position: relative;
 }
 
 /* Note Editor */
@@ -110,7 +111,8 @@
   background-color: var(--white);
   color: var(--btn--text);
   margin: 1rem auto;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid var(--btn--text);
 }
 .task__title {
   font-size: 1.25rem;
@@ -123,14 +125,19 @@
   margin: 0.5rem;
 }
 .task__time {
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   font-weight: 500;
   margin: 1rem 0;
-  background-color: var(--btn--text);
-  color: var(--white);
+  background-color: var(--tertiary);
+  color: var(--btn--text);
   padding: 0.5rem 0.75rem;
   width: fit-content;
   border-radius: 20px;
+}
+.task__section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 .btn--task,
 .btn--task:hover {
@@ -147,8 +154,96 @@
   color: var(--white);
 }
 .btn--delete {
-  background-color: var(--tertiary);
+  background-color: var(--white);
   color: var(--btn--text);
+}
+
+/* clock */
+.clock {
+  background-color: var(--white);
+  border-radius: 5px;
+  border: 1px solid var(--btn--text);
+  width: 90%;
+  max-width: 30rem;
+  margin: 1rem auto;
+  color: var(--btn--text);
+  position: sticky;
+  top: 1rem;
+}
+.clock__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.75rem;
+}
+.clock__para {
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-align: left;
+  padding: 1rem;
+}
+.clock__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn--clock {
+  margin: 0.75rem 0.25rem;
+  border-radius: 5px;
+  font-weight: 500;
+}
+.btn--start {
+  background-color: var(--green);
+  color: var(--white);
+}
+.btn--pause {
+  background-color: var(--red);
+  color: var(--white);
+}
+.btn--end {
+  background-color: var(--btn--text);
+  color: var(--white);
+}
+
+/* Donut */
+.donut {
+  width: 170px;
+  height: 170px;
+  margin: auto;
+  position: relative;
+}
+.outer {
+  width: 160px;
+  height: 160px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: var(--btn--text);
+}
+.inner {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-color: var(--white);
+}
+.time {
+  font-size: 2rem;
+  font-weight: normal;
+  color: var(--btn--text);
+  position: absolute;
+  top: 37%;
+  left: 27%;
+}
+.circle {
+  fill: none;
+  stroke: var(--tertiary);
+  stroke-width: 12px;
+  transform: rotateZ(-88deg);
+  transform-origin: 44% 44%;
+}
+svg {
+  position: absolute;
+  top: -4px;
+  left: 0;
 }
 
 /* Media Queries */

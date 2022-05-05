@@ -5,6 +5,7 @@ import Newtask from './Newtask';
 import Tasks from './Tasks';
 import { useSelector, useDispatch } from 'react-redux';
 import { updatePostHandler } from '../../actions/noteActions';
+import Clock from './Clock';
 
 export default function Pomodoro() {
   const [usertasks, setuserTasks] = useState([]);
@@ -55,7 +56,9 @@ export default function Pomodoro() {
               handleDeletetask={handleDeletetask}
             />
           </div>
-          <div className='aside_right'></div>
+          <div className='aside_right'>
+            <Clock />
+          </div>
         </div>
       )}
     </Fragment>

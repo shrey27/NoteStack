@@ -38,21 +38,24 @@ export default function Tasks({ usertasks, handleNewTask, handleDeletetask }) {
             <h1 className='task__title'>{task.title}</h1>
             <hr />
             <p className='task__para'>{task.description}</p>
-            <h1 className='task__time'>{task.time} mins</h1>
-            <section className='task__section'>
-              {task.completed ? (
-                <button className='btn btn--task btn--complete'>
-                  <i class='fa-solid fa-circle-check'></i> Complete
+
+            <div className='flex-ct-sb'>
+              <h1 className='task__time'>{task.time} mins</h1>
+              <section className='task__section'>
+                {task.completed ? (
+                  <button className='btn btn--task btn--complete'>
+                    <i class='fa-solid fa-circle-check'></i> Complete
+                  </button>
+                ) : (
+                  <button className='btn btn--task btn--incomplete'>
+                    <i class='fa-solid fa-circle-xmark'></i> Incomplete
+                  </button>
+                )}
+                <button className='btn btn--task btn--delete'>
+                  <i class='fa-solid fa-trash'></i> Delete
                 </button>
-              ) : (
-                <button className='btn btn--task btn--incomplete'>
-                  <i class='fa-solid fa-circle-xmark'></i> Incomplete
-                </button>
-              )}
-              <button className='btn btn--task btn--delete'>
-                <i class='fa-solid fa-trash'></i> Delete
-              </button>
-            </section>
+              </section>
+            </div>
           </div>
         );
       })}
