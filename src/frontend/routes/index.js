@@ -5,6 +5,7 @@ import Signin from '../pages/authentication/Signin';
 import Signup from '../pages/authentication/Signup';
 import Trash from '../pages/trash';
 import Archive from '../pages/archive';
+import NotFound from '../pages/notfound';
 
 // Routes
 export const LANDING = '/';
@@ -23,12 +24,12 @@ export const availableRoutes = (
     <Route path={SIGNIN} element={<Signin />} />
     <Route path={TRASH} element={<Trash />} />
     <Route path={ARCHIVE} element={<Archive />} />
+    <Route path={NOTFOUND} element={<NotFound />} /> 
   </Routes>
 );
 
 /*
 {
-    <Route path={NOTFOUND} element={<NotFound />} /> 
     <Route path={LANDING} element={<PrivateRoute />}>
 }
 */
