@@ -14,8 +14,19 @@ export default function Homepage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setuserNotes(user?.notes);
+    let temp = user?.notes?.filter((item) => !item.trash);
+    setuserNotes(temp);
   }, [user]);
+
+  const handleDeleteNote = (note) => {
+    let temp = usernotes.filter((curr) => curr.id !== note.id);
+    dispatch(
+      updatePostHandler({
+        uid: user?.uid,
+        note: { ...user, notes: temp }
+      })
+    );
+  };
 
   const handleNewNote = (newNote) => {
     if (usernotes.some((item) => item.id === newNote.id)) {
@@ -58,6 +69,8 @@ export default function Homepage() {
             notes={usernotes}
             setEditModal={setEditModal}
             setFormObject={setFormObject}
+            handleNewNote={handleNewNote}
+            handleDeleteNote={handleDeleteNote}
           />
         )}
       </PageTemplate>

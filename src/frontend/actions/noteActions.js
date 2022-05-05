@@ -5,7 +5,6 @@ import { getDoc, doc, updateDoc } from 'firebase/firestore';
 export const updatePostHandler = createAsyncThunk(
   'auth/updatePostHandler',
   async (initialPost, { rejectWithValue }) => {
-    console.log(initialPost);
     try {
       const { uid, note } = initialPost;
       await updateDoc(doc(db, userPostCollection, uid), note);
