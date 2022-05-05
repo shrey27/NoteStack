@@ -30,7 +30,7 @@ export default function Newtask({ handleNewTask }) {
   return (
     <Fragment>
       {!showEditor ? (
-        <div className='newnote box-shadow' onClick={() => setShowEditor(true)}>
+        <div className='newTask box-shadow' onClick={() => setShowEditor(true)}>
           <span>Create a Task</span>
           <span>
             <i className='fa-solid fa-plus'></i>
@@ -38,17 +38,17 @@ export default function Newtask({ handleNewTask }) {
         </div>
       ) : (
         <div>
-          <form onSubmit={handleSubmit} className='note'>
+          <form onSubmit={handleSubmit} className='newTask_note'>
             <input
               type='text'
-              className='note__title'
+              className='newTask__title'
               placeholder='Enter Title'
               name='title'
               value={form?.title}
               onChange={handleChange}
             />
             <textarea
-              className='note__textarea'
+              className='newTask__textarea'
               placeholder='Enter Description'
               name='description'
               value={form?.description}
@@ -56,7 +56,7 @@ export default function Newtask({ handleNewTask }) {
             ></textarea>
             <div className='label__ctr'>
               <label
-                className={`label ${form?.time === '30' ? 'checked' : ''}`}
+                className={`label_time ${form?.time === '30' ? 'checked' : ''}`}
               >
                 30 mins
                 <input
@@ -69,7 +69,7 @@ export default function Newtask({ handleNewTask }) {
                 />
               </label>
               <label
-                className={`label ${form?.time === '60' ? 'checked' : ''}`}
+                className={`label_time ${form?.time === '60' ? 'checked' : ''}`}
               >
                 60 mins
                 <input
@@ -82,7 +82,7 @@ export default function Newtask({ handleNewTask }) {
                 />
               </label>
               <label
-                className={`label ${form?.time === '90' ? 'checked' : ''}`}
+                className={`label_time ${form?.time === '90' ? 'checked' : ''}`}
               >
                 90 mins
                 <input
@@ -95,7 +95,7 @@ export default function Newtask({ handleNewTask }) {
                 />
               </label>
               <label
-                className={`label ${form?.time === '120' ? 'checked' : ''}`}
+                className={`label_time ${form?.time === '120' ? 'checked' : ''}`}
               >
                 120 mins
                 <input

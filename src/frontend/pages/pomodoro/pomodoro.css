@@ -18,7 +18,7 @@
 }
 
 /* Note Editor */
-.newnote {
+.newTask {
   width: 90%;
   max-width: 30rem;
   margin: 1.5rem auto;
@@ -31,10 +31,10 @@
   color: var(--text);
   cursor: pointer;
 }
-.newnote span {
+.newTask span {
   margin: 0 0.5rem;
 }
-.note {
+.newTask_note {
   width: 90%;
   max-width: 30rem;
   margin: 1.5rem auto;
@@ -45,24 +45,14 @@
   padding: 0.5rem 0 0;
   background-color: var(--white);
 }
-.note__title {
+.newTask__title {
   font-size: 1.25rem;
   background-color: transparent;
   padding: 0.5rem;
   border: none;
   outline: none;
 }
-.note__label {
-  font-size: 1rem;
-  background-color: transparent;
-  padding: 0.5rem;
-  outline: none;
-  border-radius: 5px;
-  border: 1px solid var(--btn--text);
-  margin: 0 0.5rem;
-  width: fit-content;
-}
-.note__textarea {
+.newTask__textarea {
   font-size: 1rem;
   background-color: transparent;
   padding: 0.5rem;
@@ -78,7 +68,7 @@
   align-items: center;
   justify-content: flex-start;
 }
-.label {
+.label_time {
   font-size: 1rem;
   font-weight: 500;
   background-color: var(--tertiary);
@@ -86,8 +76,9 @@
   padding: 0.5rem 0.75rem;
   border-radius: 20px;
   cursor: pointer;
+  margin: 0 0.5rem;
 }
-.label.checked {
+.label_time.checked {
   background-color: var(--green);
   color: var(--white);
 }
