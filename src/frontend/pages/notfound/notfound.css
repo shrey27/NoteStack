@@ -1,0 +1,25 @@
+@import '../../../App.css';
+
+.notfound {
+  width: 100%;
+  height: 70vh;
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.notfound__image {
+  display: block;
+  width: 90%;
+  max-width: 15rem;
+  height: auto;
+  object-fit: contain;
+  border-radius: 5px;
+}
+.notfound__primary,
+.notfound__secondary {
+  font-size: 2rem;
+  color: var(--btn--text);
+  margin: 1rem;
+}

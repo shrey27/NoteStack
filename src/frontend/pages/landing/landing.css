@@ -1,7 +1,7 @@
 @import '../../../App.css';
 
 .landing {
-  margin: 5rem auto 0;
+  margin: 0 auto;
   transform: translateX(-50%, -50%);
   display: flex;
   flex-direction: column;

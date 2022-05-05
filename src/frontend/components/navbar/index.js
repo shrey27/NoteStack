@@ -13,10 +13,11 @@ export function Navbar() {
   const { theme, switchTheme } = useTheme();
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const handleDispatch = () => dispatch(signOutHandler({ navigate, LANDING }));
+  const handleDispatch = () =>
+    dispatch(signOutHandler({ dispatch, navigate, LANDING }));
 
   const handleAuthentication = () => {
-    if (token) {
+    if (token.length) {
       setSignoutModal(true);
     } else {
       navigate(SIGNIN);

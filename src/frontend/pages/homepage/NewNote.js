@@ -1,6 +1,7 @@
 import './newnote.css';
 import { Fragment, useState } from 'react';
 import { colors } from '../../utility/constants';
+import { v4 as uuid } from 'uuid';
 
 const defaultValue = {
   title: '',
@@ -9,7 +10,7 @@ const defaultValue = {
   label: ''
 };
 
-export function NewNote({ setNotes }) {
+export function NewNote({ handleNewNote }) {
   const [showEditor, setShowEditor] = useState(false);
   const [form, setForm] = useState(defaultValue);
 
@@ -21,8 +22,7 @@ export function NewNote({ setNotes }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (form.title && form.description) {
-      console.log(form);
-      setNotes((elements) => [...elements, { ...form }]);
+      handleNewNote({ ...form, id: uuid() });
     }
     setShowEditor(false);
     setForm(defaultValue);

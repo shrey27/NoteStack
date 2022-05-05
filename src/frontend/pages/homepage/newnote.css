@@ -170,3 +170,12 @@
   font-size: 1.05rem;
   margin: 1rem 1rem 1rem 0.5rem;
 }
+.btn--icon {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+.btn--icon.btn--rt {
+  float: right;
+}

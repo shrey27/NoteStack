@@ -1,0 +1,27 @@
+@import '../../../App.css';
+
+.empty {
+  width: 100%;
+  height: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 5px;
+  margin: 4rem auto 0;
+}
+.empty__image {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.empty__title {
+  color: var(--btn--text);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1rem 0;
+  background-color: var(--tertiary);
+  border-radius: 40px;
+  padding: 0.75rem 1.5rem;
+}
