@@ -1,6 +1,6 @@
 import './navbar.css';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { LANDING, HOMEPAGE, SIGNIN, LABEL } from '../../routes';
+import { LANDING, HOMEPAGE, SIGNIN, LABEL, POMODORO } from '../../routes';
 import { useTheme } from '../../context';
 import { SignoutModal } from '../modal/SignoutModal';
 import { useState } from 'react';
@@ -77,7 +77,7 @@ export function Navbar() {
               <input
                 type='text'
                 placeholder='Search By Label'
-                className='input no--bdr'
+                className='input searchbar no--bdr'
                 autoComplete='off'
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -96,6 +96,9 @@ export function Navbar() {
                 <i className='fa-solid fa-sun'></i>
               </button>
             )}
+            <Link to={POMODORO} className='btn--navbar sm sb'>
+              <i className='fa-solid fa-bell'></i>
+            </Link>
             <Link to={HOMEPAGE} className='btn--navbar sm sb'>
               <i className='fa-solid fa-house'></i>
             </Link>

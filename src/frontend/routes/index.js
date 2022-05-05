@@ -7,6 +7,7 @@ import Trash from '../pages/trash';
 import Archive from '../pages/archive';
 import Label from '../pages/label';
 import NotFound from '../pages/notfound';
+import Pomodoro from '../pages/pomodoro';
 
 // Routes
 export const LANDING = '/';
@@ -16,6 +17,7 @@ export const SIGNIN = '/signin';
 export const TRASH = '/trash';
 export const ARCHIVE = '/archive';
 export const LABEL = '/label';
+export const POMODORO = '/pomodoro';
 export const NOTFOUND = '*';
 
 export const availableRoutes = (
@@ -27,6 +29,7 @@ export const availableRoutes = (
     <Route path={TRASH} element={<Trash />} />
     <Route path={ARCHIVE} element={<Archive />} />
     <Route path={LABEL} element={<Label />} />
+    <Route path={POMODORO} element={<Pomodoro />} />
     <Route path={NOTFOUND} element={<NotFound />} />
   </Routes>
 );

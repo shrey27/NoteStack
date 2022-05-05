@@ -17,8 +17,8 @@
   background-color: var(--white);
   border-radius: 5px;
 }
-.input,
-.input:hover {
+.input.searchbar,
+.input.searchbar:hover {
   border: none;
   outline: none;
 }

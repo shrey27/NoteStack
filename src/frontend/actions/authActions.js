@@ -25,12 +25,19 @@ export const signUpHandler = createAsyncThunk(
         uid,
         username,
         email,
-        notes: []
+        notes: [],
+        tasks: []
       };
       await setDoc(doc(db, userPostCollection, uid), userObj);
       localStorage.setItem(
         'user',
-        JSON.stringify({ uid, username, email, notes: userObj.notes })
+        JSON.stringify({
+          uid,
+          username,
+          email,
+          notes: userObj.notes,
+          tasks: userObj.tasks
+        })
       );
       localStorage.setItem('token', JSON.stringify(accessToken));
       navigate(from ?? pathname, { replace: true });
