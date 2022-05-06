@@ -1,34 +1,20 @@
 import { Fragment, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../store/authSlice';
 import './pomodoro.css';
 
-export default function Tasks({ usertasks, handleNewTask, handleDeletetask }) {
-  const [tasks, setTasks] = useState([
-    {
-      id: 0,
-      title: 'task 1',
-      description: 'complete task',
-      time: 30,
-      completed: true
-    },
-    {
-      id: 1,
-      title: 'task 2',
-      description: 'complete task',
-      time: 60,
-      completed: false
-    },
-    {
-      id: 2,
-      title: 'task 3',
-      description: 'complete task',
-      time: 90,
-      completed: false
-    }
-  ]);
+export default function Tasks({ usertasks = [], handleDeletetask }) {
+  const [tasks, setTasks] = useState([]);
+  const dispatch = useDispatch();
 
-  //   useEffect(() => {
-  //     setTasks([...setTasks]);
-  //   }, [usertasks]);
+  useEffect(() => {
+    setTasks([...usertasks]);
+  }, [usertasks]);
+
+  const handleTaskUpdate = (id) => {
+    const taskObject = usertasks.find((item) => item.id === id);
+    dispatch(authActions.getTask(taskObject));
+  };
 
   return (
     <Fragment>
@@ -44,15 +30,21 @@ export default function Tasks({ usertasks, handleNewTask, handleDeletetask }) {
               <section className='task__section'>
                 {task.completed ? (
                   <button className='btn btn--task btn--complete'>
-                    <i class='fa-solid fa-circle-check'></i> Complete
+                    <i className='fa-solid fa-circle-check'></i> Complete
                   </button>
                 ) : (
-                  <button className='btn btn--task btn--incomplete'>
-                    <i class='fa-solid fa-circle-xmark'></i> Incomplete
+                  <button
+                    className='btn btn--task btn--incomplete'
+                    onClick={handleTaskUpdate.bind(this, task.id)}
+                  >
+                    <i className='fa-solid fa-circle-xmark'></i> Incomplete
                   </button>
                 )}
-                <button className='btn btn--task btn--delete'>
-                  <i class='fa-solid fa-trash'></i> Delete
+                <button
+                  className='btn btn--task btn--delete'
+                  onClick={handleDeletetask.bind(this, task)}
+                >
+                  <i className='fa-solid fa-trash'></i> Delete
                 </button>
               </section>
             </div>

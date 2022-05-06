@@ -2,36 +2,31 @@ import './pomodoro.css';
 import { Fragment, useState, useEffect, useRef } from 'react';
 const DASHEDARRAY = 468;
 
-export default function Clock({
-  task = {
-    title: 'Title 1',
-    description:
-      'Complete the task, Complete the task, Complete the task, Complete the task, Complete the task, Complete the task, Complete the task, Complete the task',
-    time: 60,
-    completed: false
-  }
-}) {
+export default function Clock({ task, handleComplete }) {
   const [start, setStart] = useState(true);
   const [pause, setPause] = useState(false);
+
   const [mins, setMins] = useState(
-    localStorage.getItem('mins') ? JSON.parse(localStorage.getItem('mins')) : 4
+    localStorage.getItem('seconds')
+      ? JSON.parse(localStorage.getItem('mins'))
+      : Number(task?.time)
   );
   const [seconds, setSeconds] = useState(
     localStorage.getItem('seconds')
       ? JSON.parse(localStorage.getItem('seconds'))
-      : 59
+      : 0
   );
   const [offset, setOffset] = useState(
     localStorage.getItem('offset')
       ? JSON.parse(localStorage.getItem('offset'))
       : 0
   );
-  const offsetStep = DASHEDARRAY / (mins * 60 + seconds);
+
   const timeRef = useRef(null);
+  const offsetStep = DASHEDARRAY / (mins * 60 + seconds);
 
   useEffect(() => {
     let id;
-
     if (!start) {
       if (!pause) {
         id = setTimeout(() => {
@@ -44,32 +39,41 @@ export default function Clock({
             setSeconds(59);
             setMins(mins - 1);
           } else {
-            setSeconds(59);
-            setMins(4);
+            setSeconds(0);
+            setMins(0);
             setOffset(0);
             setStart(true);
+            localStorage.removeItem('mins');
+            localStorage.removeItem('seconds');
+            localStorage.removeItem('offset');
+            handleComplete(task);
             clearTimeout(id);
           }
         }
       }
     }
-
     return () => clearTimeout(id);
-  }, [seconds, mins, offsetStep, pause, start]);
+  }, [seconds, mins, pause, start, offsetStep, handleComplete, task]);
+
+  useEffect(() => {
+    localStorage.setItem('mins', mins ? JSON.stringify(mins) : 0);
+    localStorage.setItem('seconds', seconds ? JSON.stringify(seconds) : 0);
+    localStorage.setItem('offset', offset ? JSON.stringify(offset) : 0);
+  }, [mins, offset, seconds]);
 
   const handleClockEnd = () => {
     clearTimeout(timeRef.current);
-    setSeconds(59);
-    setMins(4);
+    setSeconds(0);
+    setMins(0);
     setOffset(0);
+    localStorage.removeItem('mins');
+    localStorage.removeItem('seconds');
+    localStorage.removeItem('offset');
     setStart(true);
+    if (task != null) {
+      handleComplete(task);
+    }
   };
-
-  useEffect(() => {
-    localStorage.setItem('mins', JSON.stringify(mins));
-    localStorage.setItem('seconds', JSON.stringify(seconds));
-    localStorage.setItem('offset', JSON.stringify(offset));
-  }, [mins, offset, seconds]);
 
   return (
     <Fragment>
@@ -96,7 +100,7 @@ export default function Clock({
               cx='74'
               cy='81'
               r='75'
-              stroke-linecap='round'
+              strokeLinecap='round'
               strokeDasharray={DASHEDARRAY}
               strokeDashoffset={offset}
             />

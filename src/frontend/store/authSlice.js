@@ -11,7 +11,8 @@ const initialState = {
   error: '',
   token: '',
   user: null,
-  search: ''
+  search: '',
+  task: null
 };
 
 const authSlice = createSlice({
@@ -26,6 +27,9 @@ const authSlice = createSlice({
     },
     getSearch(state, action) {
       state.search = action.payload;
+    },
+    getTask(state, action) {
+      state.task = action.payload;
     }
   },
   extraReducers(builder) {

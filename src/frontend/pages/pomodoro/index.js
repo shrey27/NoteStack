@@ -6,11 +6,13 @@ import Tasks from './Tasks';
 import { useSelector, useDispatch } from 'react-redux';
 import { updatePostHandler } from '../../actions/noteActions';
 import Clock from './Clock';
+import { authActions } from '../../store/authSlice';
 
 export default function Pomodoro() {
   const [usertasks, setuserTasks] = useState([]);
   const { user, authLoader } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const { task } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (user?.tasks.length) {
@@ -36,10 +38,30 @@ export default function Pomodoro() {
         note: { ...user, tasks: temp }
       })
     );
+    setuserTasks(temp);
+    dispatch(authActions.getTask(null));
+    localStorage.removeItem('taskObject');
+  };
+
+  const handleComplete = (task) => {
+    let temp = usertasks.reduce(
+      (acc, curr) =>
+        curr.id === task.id
+          ? [...acc, { ...curr, completed: true }]
+          : [...acc, curr],
+      []
+    );
+    dispatch(
+      updatePostHandler({
+        uid: user?.uid,
+        note: { ...user, tasks: [...usertasks, temp] }
+      })
+    );
   };
 
   return (
     <Fragment>
+      <h1 className='pomodoro__title'>Pomodoro Clock</h1>
       {authLoader === 'pending' ? (
         <Loader />
       ) : (
@@ -50,14 +72,10 @@ export default function Pomodoro() {
         >
           <div className='aside_left'>
             <Newtask handleNewTask={handleNewTask} />
-            <Tasks
-              usertasks={usertasks}
-              handleNewTask={handleNewTask}
-              handleDeletetask={handleDeletetask}
-            />
+            <Tasks usertasks={usertasks} handleDeletetask={handleDeletetask} />
           </div>
           <div className='aside_right'>
-            <Clock />
+            <Clock task={task} handleComplete={handleComplete} />
           </div>
         </div>
       )}
