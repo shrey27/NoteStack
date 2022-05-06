@@ -68,7 +68,7 @@ export function Navbar() {
               className='search--ctr'
             >
               <button className='search__btn' type='reset'>
-                {!search.length ? (
+                {!search ? (
                   <i className='fas fa-search search--btn'></i>
                 ) : (
                   <i className='fa-solid fa-xmark search--btn'></i>

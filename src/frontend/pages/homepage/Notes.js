@@ -44,7 +44,7 @@ export function Notes({
 
   return (
     <Fragment>
-      {!notes.length ? (
+      {!notes?.length ? (
         <Empty />
       ) : (
         <>
