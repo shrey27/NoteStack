@@ -13,12 +13,12 @@ export default function Clock({ task, handleComplete }) {
   const [mins, setMins] = useState(
     localStorage.getItem('seconds')
       ? JSON.parse(localStorage.getItem('mins'))
-      : 4
+      : 0
   );
   const [seconds, setSeconds] = useState(
     localStorage.getItem('seconds')
       ? JSON.parse(localStorage.getItem('seconds'))
-      : 59
+      : 0
   );
   const [offset, setOffset] = useState(
     localStorage.getItem('offset')

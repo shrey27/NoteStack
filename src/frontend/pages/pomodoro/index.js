@@ -31,6 +31,7 @@ export default function Pomodoro() {
   };
 
   const handleDeletetask = (task) => {
+    
     let temp = usertasks.filter((item) => item.id !== task.id);
     dispatch(
       updatePostHandler({
@@ -40,7 +41,23 @@ export default function Pomodoro() {
     );
     setuserTasks(temp);
     dispatch(authActions.getTask(null));
-    localStorage.removeItem('taskObject');
+
+    localStorage.removeItem('title');
+    localStorage.removeItem('description');
+    localStorage.removeItem('mins');
+    localStorage.removeItem('seconds');
+    localStorage.removeItem('offset');
+  };
+
+  const handleTaskUpdate = (id) => {
+    const taskObject = usertasks.find((item) => item.id === id);
+    dispatch(authActions.getTask(taskObject));
+    if (taskObject.title) {
+      localStorage.setItem('title', taskObject?.title);
+      localStorage.setItem('description', taskObject?.description);
+      localStorage.setItem('mins', taskObject?.time - 1);
+      localStorage.setItem('seconds', 59);
+    }
   };
 
   const handleComplete = (task) => {
@@ -72,7 +89,11 @@ export default function Pomodoro() {
         >
           <div className='aside_left'>
             <Newtask handleNewTask={handleNewTask} />
-            <Tasks usertasks={usertasks} handleDeletetask={handleDeletetask} />
+            <Tasks
+              usertasks={usertasks}
+              handleDeletetask={handleDeletetask}
+              handleTaskUpdate={handleTaskUpdate}
+            />
           </div>
           <div className='aside_right'>
             <Clock task={task} handleComplete={handleComplete} />

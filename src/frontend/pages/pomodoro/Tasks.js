@@ -1,26 +1,15 @@
 import { Fragment, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { authActions } from '../../store/authSlice';
 import './pomodoro.css';
 
-export default function Tasks({ usertasks = [], handleDeletetask }) {
+export default function Tasks({
+  usertasks = [],
+  handleDeletetask,
+  handleTaskUpdate
+}) {
   const [tasks, setTasks] = useState([]);
-  const dispatch = useDispatch();
-
   useEffect(() => {
     setTasks([...usertasks]);
   }, [usertasks]);
-
-  const handleTaskUpdate = (id) => {
-    const taskObject = usertasks.find((item) => item.id === id);
-    dispatch(authActions.getTask(taskObject));
-    if (taskObject.title) {
-      localStorage.setItem('title', taskObject?.title);
-      localStorage.setItem('description', taskObject?.description);
-      localStorage.setItem('mins', taskObject?.time - 1);
-      localStorage.setItem('seconds', 59);
-    }
-  };
 
   return (
     <Fragment>
