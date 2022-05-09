@@ -75,6 +75,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 .label_time {
   font-size: 1rem;

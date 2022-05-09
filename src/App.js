@@ -35,6 +35,7 @@ function App() {
       );
     }
   }, [dispatch]);
+  
   return (
     <div className='App' app-theme={theme}>
       <ScrollToTop />

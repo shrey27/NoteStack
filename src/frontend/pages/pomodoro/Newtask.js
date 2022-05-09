@@ -56,6 +56,19 @@ export default function Newtask({ handleNewTask }) {
             ></textarea>
             <div className='label__ctr'>
               <label
+                className={`label_time ${form?.time === '2' ? 'checked' : ''}`}
+              >
+                2 mins
+                <input
+                  type='radio'
+                  className='note__radio'
+                  name='time'
+                  checked={form?.time === '2'}
+                  value={2}
+                  onChange={handleChange}
+                />
+              </label>
+              <label
                 className={`label_time ${form?.time === '30' ? 'checked' : ''}`}
               >
                 30 mins
@@ -95,7 +108,9 @@ export default function Newtask({ handleNewTask }) {
                 />
               </label>
               <label
-                className={`label_time ${form?.time === '120' ? 'checked' : ''}`}
+                className={`label_time ${
+                  form?.time === '120' ? 'checked' : ''
+                }`}
               >
                 120 mins
                 <input

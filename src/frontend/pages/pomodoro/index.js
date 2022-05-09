@@ -54,7 +54,7 @@ export default function Pomodoro() {
     dispatch(
       updatePostHandler({
         uid: user?.uid,
-        note: { ...user, tasks: [...usertasks, temp] }
+        note: { ...user, tasks: temp }
       })
     );
   };

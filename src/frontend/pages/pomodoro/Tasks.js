@@ -14,6 +14,12 @@ export default function Tasks({ usertasks = [], handleDeletetask }) {
   const handleTaskUpdate = (id) => {
     const taskObject = usertasks.find((item) => item.id === id);
     dispatch(authActions.getTask(taskObject));
+    if (taskObject.title) {
+      localStorage.setItem('title', taskObject?.title);
+      localStorage.setItem('description', taskObject?.description);
+      localStorage.setItem('mins', taskObject?.time - 1);
+      localStorage.setItem('seconds', 59);
+    }
   };
 
   return (

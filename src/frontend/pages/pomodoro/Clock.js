@@ -6,15 +6,19 @@ export default function Clock({ task, handleComplete }) {
   const [start, setStart] = useState(true);
   const [pause, setPause] = useState(false);
 
+  const [title, setTitle] = useState(localStorage.getItem('title') ?? '');
+  const [description, setDescription] = useState(
+    localStorage.getItem('title') ?? ''
+  );
   const [mins, setMins] = useState(
     localStorage.getItem('seconds')
       ? JSON.parse(localStorage.getItem('mins'))
-      : Number(task?.time)
+      : 4
   );
   const [seconds, setSeconds] = useState(
     localStorage.getItem('seconds')
       ? JSON.parse(localStorage.getItem('seconds'))
-      : 0
+      : 59
   );
   const [offset, setOffset] = useState(
     localStorage.getItem('offset')
@@ -32,7 +36,7 @@ export default function Clock({ task, handleComplete }) {
         id = setTimeout(() => {
           setSeconds((e) => e - 1);
           setOffset((e) => e + offsetStep);
-        }, 1000);
+        }, 100);
         timeRef.current = id;
         if (seconds === 0) {
           if (mins) {
@@ -61,14 +65,28 @@ export default function Clock({ task, handleComplete }) {
     localStorage.setItem('offset', offset ? JSON.stringify(offset) : 0);
   }, [mins, offset, seconds]);
 
+  useEffect(() => {
+    if (task) {
+      setTitle(task?.title);
+      setDescription(task?.description);
+      setMins(task?.time - 1);
+      setSeconds(59);
+      setOffset(0);
+    }
+  }, [task]);
+
   const handleClockEnd = () => {
     clearTimeout(timeRef.current);
     setSeconds(0);
     setMins(0);
     setOffset(0);
+    setTitle('');
+    setDescription('');
     localStorage.removeItem('mins');
     localStorage.removeItem('seconds');
     localStorage.removeItem('offset');
+    localStorage.removeItem('title');
+    localStorage.removeItem('description');
     setStart(true);
     if (task != null) {
       handleComplete(task);
@@ -78,9 +96,9 @@ export default function Clock({ task, handleComplete }) {
   return (
     <Fragment>
       <div className='clock'>
-        <h1 className='clock__title'>{task?.title}</h1>
+        <h1 className='clock__title'>{title}</h1>
         <hr />
-        <p className='clock__para'>{task?.description}</p>
+        <p className='clock__para'>{description}</p>
         <div className='donut'>
           <div className='outer'>
             <div className='inner'>
