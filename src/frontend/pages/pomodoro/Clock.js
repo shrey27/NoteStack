@@ -36,7 +36,7 @@ export default function Clock({ task, handleComplete }) {
         id = setTimeout(() => {
           setSeconds((e) => e - 1);
           setOffset((e) => e + offsetStep);
-        }, 100);
+        }, 1000);
         timeRef.current = id;
         if (seconds === 0) {
           if (mins) {
