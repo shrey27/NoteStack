@@ -93,6 +93,12 @@ export default function Clock({ task, handleComplete }) {
     }
   };
 
+  const handleStart = () => {
+    if (mins > 0 || seconds > 0) {
+      setStart(false);
+    }
+  };
+
   return (
     <Fragment>
       <div className='clock'>
@@ -126,11 +132,9 @@ export default function Clock({ task, handleComplete }) {
         </div>
         <section className='clock__buttons'>
           {start && (
-            <button
-              className='btn btn--clock btn--start'
-              onClick={() => setStart(false)}
-            >
-              <i className='fa-solid fa-check'></i> Start
+            <button className='btn btn--clock btn--start' onClick={handleStart}>
+              <i className='fa-solid fa-check'></i>{' '}
+              {mins > 0 && seconds > 0 ? 'Start' : 'Select a Task'}
             </button>
           )}
           {!start && (
