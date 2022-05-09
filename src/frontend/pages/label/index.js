@@ -1,22 +1,28 @@
-import './homepage.css';
-import { Fragment, useState, useEffect } from 'react';
-import { PageTemplate, EditNoteModal, Loader } from '../../components';
-import { NewNote } from './NewNote';
-import { Notes } from './Notes';
-import { useSelector, useDispatch } from 'react-redux';
+import './label.css';
+import { Fragment, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { updatePostHandler } from '../../actions/noteActions';
+import { Loader, PageTemplate, EditNoteModal } from '../../components';
+import { Notes } from '../homepage/Notes';
 
-export default function Homepage() {
+export default function Label() {
   const [usernotes, setuserNotes] = useState([]);
   const [editModal, setEditModal] = useState(false);
   const [formObject, setFormObject] = useState({});
-  const { user, authLoader } = useSelector((state) => state.auth);
+  const { user, authLoader, search } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    let temp = user?.notes?.filter((item) => !item.trash && !item.archive);
+    let temp = user?.notes
+      ?.filter((item) => item.label)
+      .filter((item) => !item.archive)
+      .filter((item) => !item.trash);
+      
+    if (search) {
+      temp = temp.filter((item) => item.label === search);
+    }
     setuserNotes(temp);
-  }, [user]);
+  }, [user?.notes, search]);
 
   const handleDeleteNote = (note) => {
     let temp = usernotes.filter((curr) => curr.id !== note.id);
@@ -61,20 +67,17 @@ export default function Homepage() {
         />
       )}
       <PageTemplate>
-        <div className={`${authLoader === 'pending' && 'pointerEvents'}`}>
-          <NewNote handleNewNote={handleNewNote} />
-          {authLoader === 'pending' ? (
-            <Loader />
-          ) : (
-            <Notes
-              notes={usernotes}
-              setEditModal={setEditModal}
-              setFormObject={setFormObject}
-              handleNewNote={handleNewNote}
-              handleDeleteNote={handleDeleteNote}
-            />
-          )}
-        </div>
+        {authLoader === 'pending' ? (
+          <Loader />
+        ) : (
+          <Notes
+            notes={usernotes}
+            setEditModal={setEditModal}
+            setFormObject={setFormObject}
+            handleNewNote={handleNewNote}
+            handleDeleteNote={handleDeleteNote}
+          />
+        )}
       </PageTemplate>
     </Fragment>
   );

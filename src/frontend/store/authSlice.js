@@ -10,7 +10,8 @@ const initialState = {
   authLoader: 'idle',
   error: '',
   token: '',
-  user: null
+  user: null,
+  search: ''
 };
 
 const authSlice = createSlice({
@@ -22,6 +23,9 @@ const authSlice = createSlice({
     },
     getUser(state, action) {
       state.user = action.payload;
+    },
+    getSearch(state, action) {
+      state.search = action.payload;
     }
   },
   extraReducers(builder) {
@@ -32,8 +36,8 @@ const authSlice = createSlice({
       .addCase(signUpHandler.fulfilled, (state, action) => {
         state.authLoader = 'fulfilled';
         const { accessToken, userObj } = action.payload;
-        const { uid, username, email, notes } = userObj;
-        state.user = { uid, username, email, notes };
+        const { uid, username, email, notes, tasks } = userObj;
+        state.user = { uid, username, email, notes, tasks };
         state.token = accessToken;
       })
       .addCase(signUpHandler.rejected, (state, action) => {
@@ -46,8 +50,8 @@ const authSlice = createSlice({
       .addCase(signInHandler.fulfilled, (state, action) => {
         state.authLoader = 'fulfilled';
         const { accessToken, userObj } = action.payload;
-        const { uid, username, email, notes } = userObj;
-        state.user = { uid, username, email, notes };
+        const { uid, username, email, notes, tasks } = userObj;
+        state.user = { uid, username, email, notes, tasks };
         state.token = accessToken;
       })
       .addCase(signInHandler.rejected, (state, action) => {

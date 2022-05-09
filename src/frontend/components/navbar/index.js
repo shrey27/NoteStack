@@ -1,18 +1,22 @@
 import './navbar.css';
-import { Link, useNavigate } from 'react-router-dom';
-import { LANDING, HOMEPAGE, SIGNIN } from '../../routes';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { LANDING, HOMEPAGE, SIGNIN, LABEL, POMODORO } from '../../routes';
 import { useTheme } from '../../context';
 import { SignoutModal } from '../modal/SignoutModal';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { signOutHandler } from '../../actions/authActions';
+import { authActions } from '../../store/authSlice';
 
 export function Navbar() {
-  const navigate = useNavigate();
   const [signoutModal, setSignoutModal] = useState(false);
+  const [search, setSearch] = useState('');
   const { theme, switchTheme } = useTheme();
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
   const handleDispatch = () =>
     dispatch(signOutHandler({ dispatch, navigate, LANDING }));
 
@@ -22,6 +26,16 @@ export function Navbar() {
     } else {
       navigate(SIGNIN);
     }
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    dispatch(authActions.getSearch(search));
+  };
+
+  const clearSearch = (e) => {
+    e.preventDefault();
+    setSearch('');
   };
 
   return (
@@ -46,19 +60,31 @@ export function Navbar() {
             />
           </Link>
         </section>
-        {/* {pathname === '/homepage' && <section className="middle cen sm-s">
-                <div className="search--ctr">
-                    <i className="fas fa-search search--btn"></i>
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        className="input no--bdr"
-                        id="user-name"
-                        name="user-name"
-                        autoComplete="off"
-                    />
-                </div>
-            </section>} */}
+        {pathname === LABEL && (
+          <section className='middle cen sm-s'>
+            <form
+              onSubmit={handleSearch}
+              onReset={clearSearch}
+              className='search--ctr'
+            >
+              <button className='search__btn' type='reset'>
+                {!search ? (
+                  <i className='fas fa-search search--btn'></i>
+                ) : (
+                  <i className='fa-solid fa-xmark search--btn'></i>
+                )}
+              </button>
+              <input
+                type='text'
+                placeholder='Search By Label'
+                className='input searchbar no--bdr'
+                autoComplete='off'
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </form>
+          </section>
+        )}
         <section className='end sm-s'>
           <div className='menu'>
             {theme === 'light' ? (
@@ -70,6 +96,9 @@ export function Navbar() {
                 <i className='fa-solid fa-sun'></i>
               </button>
             )}
+            <Link to={POMODORO} className='btn--navbar sm sb'>
+              <i className='fa-solid fa-bell'></i>
+            </Link>
             <Link to={HOMEPAGE} className='btn--navbar sm sb'>
               <i className='fa-solid fa-house'></i>
             </Link>

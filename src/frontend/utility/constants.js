@@ -1,7 +1,7 @@
 export const navlinks = [
   {
     id: 'N1',
-    name: 'Posts',
+    name: 'Notes',
     path: '/homepage',
     class: 'fa-solid fa-clipboard'
   },
