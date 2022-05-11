@@ -8,6 +8,7 @@ import Archive from '../pages/archive';
 import Label from '../pages/label';
 import NotFound from '../pages/notfound';
 import Pomodoro from '../pages/pomodoro';
+import PrivateRoute from './PrivateRoute';
 
 // Routes
 export const LANDING = '/';
@@ -23,19 +24,17 @@ export const NOTFOUND = '*';
 export const availableRoutes = (
   <Routes>
     <Route path={LANDING} element={<Landing />} />
-    <Route path={HOMEPAGE} element={<Homepage />} />
     <Route path={SIGNUP} element={<Signup />} />
     <Route path={SIGNIN} element={<Signin />} />
-    <Route path={TRASH} element={<Trash />} />
-    <Route path={ARCHIVE} element={<Archive />} />
-    <Route path={LABEL} element={<Label />} />
-    <Route path={POMODORO} element={<Pomodoro />} />
     <Route path={NOTFOUND} element={<NotFound />} />
+
+    <Route path={LANDING} element={<PrivateRoute />}>
+      <Route path={HOMEPAGE} element={<Homepage />} />
+      <Route path={TRASH} element={<Trash />} />
+      <Route path={ARCHIVE} element={<Archive />} />
+      <Route path={LABEL} element={<Label />} />
+      <Route path={POMODORO} element={<Pomodoro />} />
+    </Route>
+    
   </Routes>
 );
-
-/*
-{
-    <Route path={LANDING} element={<PrivateRoute />}>
-}
-*/

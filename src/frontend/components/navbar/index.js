@@ -18,7 +18,7 @@ export function Navbar() {
   const { pathname } = useLocation();
 
   const handleDispatch = () =>
-    dispatch(signOutHandler({ dispatch, navigate, LANDING }));
+    dispatch(signOutHandler({ dispatch, navigate }));
 
   const handleAuthentication = () => {
     if (token.length) {
