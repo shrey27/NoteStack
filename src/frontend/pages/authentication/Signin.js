@@ -1,7 +1,7 @@
 import './authentication.css';
 import { useState, Fragment } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { SIGNUP, HOMEPAGE } from '../../routes';
+import { Link, useNavigate } from 'react-router-dom';
+import { SIGNUP } from '../../routes';
 import { regexArray } from '../../utility/constants';
 import { Loader } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,10 +17,6 @@ export default function Signin() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { authLoader } = useSelector((state) => state.auth);
-
-  const location = useLocation();
-  const from = location?.state?.from?.pathname || '/';
-
   const validateFields = () => {
     const { email, password } = emailDetails;
     let errors = [];
@@ -41,7 +37,7 @@ export default function Signin() {
     e.preventDefault();
     const { email, password } = emailDetails;
     if (validateFields()) {
-      dispatch(signInHandler({ email, password, navigate, HOMEPAGE, from }));
+      dispatch(signInHandler({ email, password, navigate }));
     }
   };
 
