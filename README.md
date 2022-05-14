@@ -46,3 +46,8 @@ authenticated user.
 [NoteStack](https://note-stack.vercel.app/)
 
 ## Demo Video
+
+https://user-images.githubusercontent.com/26894106/168445982-54ef045c-8d4b-429f-9440-903c33d5c839.mp4
+
+
+
